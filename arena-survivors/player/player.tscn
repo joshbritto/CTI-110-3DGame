@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://3t5t6nnhirck" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://dtfrpxxndykxq" path="res://player/simple_gun/gun_model.glb" id="2_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dj0afkus2x3u3" path="res://player/reticle.png" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://b35uyeulvs5dc" path="res://player/gun_shoot.wav" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fpyuh"]
 
 [node name="Player" type="CharacterBody3D" unique_id=316216871]
+collision_mask = 3
 script = ExtResource("1_oul6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1285144849]
@@ -17,12 +19,12 @@ shape = SubResource("CapsuleShape3D_fpyuh")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5771928, 0)
 
-[node name="Marker3D" type="Marker3D" parent="Camera3D" unique_id=2138333413]
-unique_name_in_owner = true
-transform = Transform3D(0.6667431, 0, 0, 0, 0.6667435, 0, 0, 0, 0.6667435, 0.7651122, -0.6350145, -1.5081015)
-
 [node name="gun_model" parent="Camera3D" unique_id=1097520014 instance=ExtResource("2_rkbax")]
-transform = Transform3D(-0.66674316, 0, 5.828859e-08, 0, 0.6667436, 0, -5.828854e-08, 0, -0.66674376, 0.7641404, -0.63698155, -1.1398938)
+transform = Transform3D(-0.66662997, -0.0029818304, -0.011903517, -0.003422336, 0.6662749, 0.024758585, 0.011784416, 0.02481549, -0.66617805, 0.35139942, -0.36960018, -0.51841235)
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D/gun_model" unique_id=2138333413]
+unique_name_in_owner = true
+transform = Transform3D(-0.9999999, 0, -8.742281e-08, 0, 0.9999999, 0, 8.7422684e-08, 0, -0.99999964, -0.0014574528, 0.0029503107, 0.55224764)
 
 [node name="Reticle" type="TextureRect" parent="." unique_id=1359404915]
 anchors_preset = 8
@@ -41,5 +43,9 @@ expand_mode = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1957140731]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=560254270]
+unique_name_in_owner = true
+stream = ExtResource("4_yw30f")

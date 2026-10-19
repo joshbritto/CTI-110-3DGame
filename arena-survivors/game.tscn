@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c03pula2mk4kp"]
 
+[ext_resource type="Script" uid="uid://bmc17k0ovck1i" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bfau63sspcfax" path="res://player/player.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://cf1x45iahfjma" path="res://level/checkboard.png" id="1_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://drr5i0yeu3s3a" path="res://mob/mob.tscn" id="2_fc0e3"]
 [ext_resource type="Material" uid="uid://cb1lrbfailokr" path="res://level/bridge.tres" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://crkoq3fjiiwua" path="res://mob/spawner/mob_spawner_3d.tscn" id="5_7jktm"]
 
 [sub_resource type="Environment" id="Environment_g0yeo"]
 background_mode = 1
@@ -21,7 +22,16 @@ albedo_color = Color(0.03286584, 0.56554484, 0.2714845, 1)
 albedo_texture = ExtResource("1_e2o6t")
 uv1_triplanar = true
 
+[sub_resource type="LabelSettings" id="LabelSettings_fpyuh"]
+font_size = 56
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fpyuh"]
+
 [node name="Game" type="Node3D" unique_id=1246623811]
+script = ExtResource("1_7jktm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1524445691]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.8660254, 0, -0.8660254, 0.49999997, 0, 3, 3)
@@ -31,9 +41,6 @@ shadow_enabled = true
 environment = SubResource("Environment_g0yeo")
 
 [node name="Player" parent="." unique_id=316216871 instance=ExtResource("1_80nbo")]
-
-[node name="Mob" parent="." unique_id=159648153 instance=ExtResource("2_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.090865016, 1.270335, -6.343671)
 
 [node name="Map" type="Node" parent="." unique_id=1239073297]
 
@@ -114,3 +121,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5, 0)
 use_collision = true
 size = Vector3(10, 10, 10)
 material = SubResource("StandardMaterial3D_80nbo")
+
+[node name="Spawners" type="Node" parent="." unique_id=97808105]
+
+[node name="MobSpawner3D" parent="Spawners" unique_id=805462133 instance=ExtResource("5_7jktm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 0)
+
+[node name="Label" type="Label" parent="." unique_id=822363332]
+unique_name_in_owner = true
+offset_left = 32.0
+offset_top = 23.0
+offset_right = 244.0
+offset_bottom = 100.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_fpyuh")
+
+[node name="KillPlane" type="Area3D" parent="." unique_id=735913297]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane" unique_id=487148589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.430083, 0)
+shape = SubResource("WorldBoundaryShape3D_fpyuh")
+
+[connection signal="mob_spawned" from="Spawners/MobSpawner3D" to="." method="_on_mob_spawner_3d_mob_spawned"]
+[connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
