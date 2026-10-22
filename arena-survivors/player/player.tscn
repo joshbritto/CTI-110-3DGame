@@ -20,7 +20,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5771928, 0)
 
 [node name="gun_model" parent="Camera3D" unique_id=1097520014 instance=ExtResource("2_rkbax")]
-transform = Transform3D(-0.66662997, -0.0029818304, -0.011903517, -0.003422336, 0.6662749, 0.024758585, 0.011784416, 0.02481549, -0.66617805, 0.35139942, -0.36960018, -0.51841235)
+transform = Transform3D(-0.66654515, -0.01132995, -0.011632338, -0.01163228, 0.66641355, 0.01745333, 0.011329974, 0.017651077, -0.66641426, 0.35, -0.37, -0.5)
 
 [node name="Marker3D" type="Marker3D" parent="Camera3D/gun_model" unique_id=2138333413]
 unique_name_in_owner = true
@@ -49,3 +49,12 @@ one_shot = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=560254270]
 unique_name_in_owner = true
 stream = ExtResource("4_yw30f")
+
+[node name="BarrierMessage" type="Label" parent="." unique_id=1478633704]
+unique_name_in_owner = true
+visible = false
+offset_left = 386.0
+offset_top = 390.0
+offset_right = 577.0
+offset_bottom = 413.0
+text = "Hold F to Rebuild Barrier"
