@@ -21,12 +21,18 @@ func _on_body_entered(body: Node3D) -> void:
 		player_in_range = true
 		body.get_node("BarrierMessage").visible = true
 	elif body.is_in_group("mobs"):
-		timer.start()
+		mobs_in_range += 1
+		if health > 0 and timer.is_stopped():
+			timer.start()
 
 func _on_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		player_in_range = false
 		body.get_node("BarrierMessage").visible = false
+	elif body.is_in_group("mobs"):
+		mobs_in_range -= 1
+		if mobs_in_range <= 0:
+			timer.stop()
 
 func _on_timer_timeout() -> void:
 	if health <= 0:
