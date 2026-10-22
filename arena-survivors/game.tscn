@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://cb1lrbfailokr" path="res://level/bridge.tres" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://crkoq3fjiiwua" path="res://mob/spawner/mob_spawner_3d.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://gmietb8a3sib" path="res://level/barricade.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://v1euk4ksxpfj" path="res://level/blockade.tscn" id="7_eow3j"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fpyuh"]
 vertices = PackedVector3Array(-0.5, 0.5, -20.25, 0.75, 0.5, -20.25, 4.5, 0.5, -20.5, 4.75, 0.5, -24.5, 4.75, 0.5, -25.75, 4.5, 0.5, -29.5, -4.5, 0.5, -29.5, -4.5, 0.5, -20.5, 20.5, 0.5, -20.5, 24.25, 0.5, -20.25, 25.5, 0.5, -20.25, 20.5, 0.5, -29.5, 20.25, 0.5, -25.75, 20.25, 0.5, -24.5, 29.5, 0.5, -20.5, 29.5, 0.5, -29.5, 13.25, 0.5, -24.25, 12, 0.5, -24.25, 12, 0.5, -16.25, 13.25, 0.5, -16.25, 1, 0.5, -13.25, -0.5, 0.5, -4.75, 0.75, 0.5, -4.75, 1, 0.5, -12, 8.75, 0.5, -12, 8.75, 0.5, -13.25, 24, 0.5, -13.25, 24, 0.5, -12, 24.25, 0.5, -4.75, 25.5, 0.5, -4.75, 16.25, 0.5, -13.25, 16.25, 0.5, -12, 12, 0.5, -8.75, 13.25, 0.5, -8.75, 16, 0.5, -9, 16, 0.5, -16, 9, 0.5, -16, 9, 0.5, -9, 20.25, 0.5, 0.5, 20.25, 0.5, -0.75, 13.25, 0.5, -1, 12, 0.5, -1, 4.75, 0.5, -0.75, 4.75, 0.5, 0.5, 4.5, 0.5, -4.5, -4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 20.5, 0.5, -4.5, 20.5, 0.5, 4.5, 29.5, 0.5, 4.5, 29.5, 0.5, -4.5)
@@ -175,6 +176,9 @@ shape = SubResource("WorldBoundaryShape3D_fpyuh")
 
 [node name="Barricade" parent="." unique_id=235246161 instance=ExtResource("6_ryrav")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 20.355265, 0, -0.0400666)
+
+[node name="Blockade" parent="." unique_id=639951861 instance=ExtResource("7_eow3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.088113, 0.105710864, -0.123441696)
 
 [connection signal="mob_spawned" from="Spawners/MobSpawner3D" to="." method="_on_mob_spawner_3d_mob_spawned"]
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]

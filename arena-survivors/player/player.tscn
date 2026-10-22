@@ -58,3 +58,12 @@ offset_top = 390.0
 offset_right = 577.0
 offset_bottom = 413.0
 text = "Hold F to Rebuild Barrier"
+
+[node name="ClearMessage" type="Label" parent="." unique_id=566681000]
+visible = false
+offset_left = 422.0
+offset_top = 360.0
+offset_right = 536.0
+offset_bottom = 409.0
+text = "Hold F to Clear
+"
