@@ -50,20 +50,10 @@ one_shot = true
 unique_name_in_owner = true
 stream = ExtResource("4_yw30f")
 
-[node name="BarrierMessage" type="Label" parent="." unique_id=1478633704]
+[node name="UseMessage" type="Label" parent="." unique_id=1478633704]
 unique_name_in_owner = true
 visible = false
 offset_left = 386.0
 offset_top = 390.0
 offset_right = 577.0
 offset_bottom = 413.0
-text = "Hold F to Rebuild Barrier"
-
-[node name="ClearMessage" type="Label" parent="." unique_id=566681000]
-visible = false
-offset_left = 422.0
-offset_top = 360.0
-offset_right = 536.0
-offset_bottom = 409.0
-text = "Hold F to Clear
-"

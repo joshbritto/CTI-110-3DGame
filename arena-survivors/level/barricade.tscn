@@ -44,6 +44,8 @@ mesh = SubResource("BoxMesh_fpyuh")
 [node name="Timer" type="Timer" parent="." unique_id=596793259]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1704378000]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionField" type="CollisionShape3D" parent="StaticBody3D" unique_id=2141155346]
 unique_name_in_owner = true

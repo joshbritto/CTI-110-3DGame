@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		player_in_range = true
-		body.get_node("BarrierMessage").visible = true
+		body.get_node("UseMessage").visible = true
+		body.get_node("UseMessage").text = "Hold F to Rebuild Barrier"
 	elif body.is_in_group("mobs"):
 		mobs_in_range += 1
 		if health > 0 and timer.is_stopped():
@@ -28,7 +29,7 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		player_in_range = false
-		body.get_node("BarrierMessage").visible = false
+		body.get_node("UseMessage").visible = false
 	elif body.is_in_group("mobs"):
 		mobs_in_range -= 1
 		if mobs_in_range <= 0:
