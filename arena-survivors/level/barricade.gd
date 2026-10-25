@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 		if health == MAXHEALTH:
 			return
 		get_node("PlankMesh" + str(health+1)).visible = true
+		get_node("/root/Game").increase_score(10)
 		health += 1
 		broken = false
 		%CollisionField.disabled = false

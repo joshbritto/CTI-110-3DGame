@@ -7,6 +7,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fpyuh"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_60xd1"]
+
 [node name="Player" type="CharacterBody3D" unique_id=316216871]
 collision_mask = 3
 script = ExtResource("1_oul6g")
@@ -53,7 +55,23 @@ stream = ExtResource("4_yw30f")
 [node name="UseMessage" type="Label" parent="." unique_id=1478633704]
 unique_name_in_owner = true
 visible = false
-offset_left = 386.0
-offset_top = 390.0
-offset_right = 577.0
-offset_bottom = 413.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.5
+offset_top = -23.0
+offset_right = 95.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1536699102]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=958675801]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_60xd1")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

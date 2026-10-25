@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
+signal hurt
 signal died
 
-var health = 3
 var SPEED = randf_range(2.0, 4.0)
 var chase_player = false
 
+@export var health: int = 3
 @export var barricade: Node3D = null
 @onready var bat_model = %bat_model
 @onready var player = get_node("/root/Game/Player")
@@ -37,12 +38,14 @@ func take_damage():
 	if health == 0:
 		return
 		
+	hurt.emit()
 	bat_model.hurt()
 	health -= 1
 	hurt_sound.play()
 	
 	if health == 0:
 		set_physics_process(false)
+		bat_model.visible = false
 		%CollisionShape3D.disabled = true
 		died.emit()
 		ko_sound.play()

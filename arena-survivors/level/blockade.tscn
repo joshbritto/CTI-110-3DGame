@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://v1euk4ksxpfj"]
 
 [ext_resource type="Script" uid="uid://df0fmf8eposx7" path="res://level/blockade.gd" id="1_t1etc"]
+[ext_resource type="Material" uid="uid://cb1lrbfailokr" path="res://level/bridge.tres" id="2_pp5wk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fpyuh"]
 
@@ -11,11 +12,15 @@ size = Vector3(2.538086, 2.2041016, 2.4863281)
 
 [sub_resource type="PrismMesh" id="PrismMesh_fpyuh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpyuh"]
+size = Vector3(2.121338, 2.2126465, 2.1235352)
+
 [node name="Blockade" type="Area3D" unique_id=639951861]
 script = ExtResource("1_t1etc")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1598712854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14885736, 0.5026613, 0.5055607)
+material_override = ExtResource("2_pp5wk")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="InteractField" type="CollisionShape3D" parent="." unique_id=673146587]
@@ -24,11 +29,19 @@ shape = SubResource("BoxShape3D_60xd1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1317115277]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85114264, 1, 0)
+material_override = ExtResource("2_pp5wk")
 mesh = SubResource("CylinderMesh_fpyuh")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=468115151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39428914, -0.5106917)
+material_override = ExtResource("2_pp5wk")
 mesh = SubResource("PrismMesh_fpyuh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1696123331]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=353305248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35681152, 0.9859619, -0.043701172)
+shape = SubResource("BoxShape3D_fpyuh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

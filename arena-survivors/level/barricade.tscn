@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gmietb8a3sib"]
 
 [ext_resource type="Script" uid="uid://dhs801nrrwuoq" path="res://level/barricade.gd" id="1_tts3i"]
+[ext_resource type="Material" uid="uid://de3iflle4lbkc" path="res://level/board.tres" id="2_gfcdo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_60xd1"]
 size = Vector3(1, 1.328064, 0.70214844)
@@ -23,22 +24,27 @@ shape = SubResource("BoxShape3D_60xd1")
 
 [node name="PlankMesh1" type="MeshInstance3D" parent="." unique_id=401398806]
 transform = Transform3D(0.99540806, -0.0957228, 0, 0.0957228, 0.99540806, 0, 0, 0, 1, 0, 0.63405436, 0)
+material_override = ExtResource("2_gfcdo")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="PlankMesh4" type="MeshInstance3D" parent="." unique_id=1900636716]
 transform = Transform3D(0.116511844, 0.9931893, 0, -0.9931893, 0.116511844, 0, 0, 0, 1, -0.2507514, 0.5904443, -0.046450585)
+material_override = ExtResource("2_gfcdo")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="PlankMesh5" type="MeshInstance3D" parent="." unique_id=100524529]
 transform = Transform3D(-0.0757272, 0.99712855, 0, -0.99712855, -0.0757272, 0, 0, 0, 1, 0.20014767, 0.5904443, -0.03986472)
+material_override = ExtResource("2_gfcdo")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="PlankMesh2" type="MeshInstance3D" parent="." unique_id=1130166494]
 transform = Transform3D(0.9981563, 0.0606952, 0, -0.0606952, 0.9981563, 0, 0, 0, 1, 0, 0.9318591, 0)
+material_override = ExtResource("2_gfcdo")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="PlankMesh3" type="MeshInstance3D" parent="." unique_id=1325649959]
 transform = Transform3D(0.9977511, -0.067027494, 0, 0.067027494, 0.9977511, 0, 0, 0, 1, 0, 0.29046148, 0)
+material_override = ExtResource("2_gfcdo")
 mesh = SubResource("BoxMesh_fpyuh")
 
 [node name="Timer" type="Timer" parent="." unique_id=596793259]

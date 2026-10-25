@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+var health = 100
+const SPEED = 5.5
+const JUMP_POWER = 7
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -13,10 +17,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-
 func _physics_process(delta):
-	const SPEED = 5.5
-
 	var input_direction_2D = Input.get_vector(
 		"move_left", "move_right", "move_forward", "move_back"
 	)
@@ -30,7 +31,7 @@ func _physics_process(delta):
 
 	velocity.y -= 20.0 * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = 10.0
+		velocity.y = JUMP_POWER
 	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
 		velocity.y /= 2
 
@@ -38,6 +39,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("shoot") and %Timer.is_stopped():
 		shoot_bullet()
+		
+	if health <= 0:
+		get_tree().reload_current_scene.call_deferred()
+	health += 1
+	if health > 100:
+		health = 100
+	%ProgressBar.value = health
 
 func shoot_bullet():
 	const BULLET_3D = preload("uid://cenh32bhit5fb")
@@ -47,3 +55,7 @@ func shoot_bullet():
 	new_bullet.global_transform = %Marker3D.global_transform
 	%Timer.start()
 	%AudioStreamPlayer.play()
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("mobs"):
+		health -= 50
