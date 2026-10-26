@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+const MAX_HEALTH = 100
 var health = 100
 const SPEED = 5.5
 const JUMP_POWER = 7
@@ -18,6 +19,7 @@ func _unhandled_input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
+	%LowHealth.modulate.a = ((MAX_HEALTH-health)/100.0)
 	var input_direction_2D = Input.get_vector(
 		"move_left", "move_right", "move_forward", "move_back"
 	)
@@ -43,9 +45,9 @@ func _physics_process(delta):
 	if health <= 0:
 		get_tree().reload_current_scene.call_deferred()
 	health += 1
-	if health > 100:
-		health = 100
-	%ProgressBar.value = health
+
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
 
 func shoot_bullet():
 	const BULLET_3D = preload("uid://cenh32bhit5fb")
